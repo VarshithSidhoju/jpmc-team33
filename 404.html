@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Get the repo name from the pathname
+    var repoName = location.pathname.split('/')[1];
+    var segmentCount = 0;
+    
+    // If deployed to a custom domain, use '/' as the base
+    if (location.hostname !== 'username.github.io') {
+      segmentCount = 1;
+      repoName = '';
+    }
+    
+    var path = window.location.pathname;
+    var redirectPath = path.split('/').slice(segmentCount + 1).join('/');
+    var redirectUrl = window.location.origin + 
+                      (repoName ? '/' + repoName : '') + 
+                      '/#/' + redirectPath;
+    
+    window.location.replace(redirectUrl);
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
